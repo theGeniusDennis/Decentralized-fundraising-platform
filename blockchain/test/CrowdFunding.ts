@@ -2,22 +2,24 @@ import { loadFixture } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import {expect} from "chai";
 import {ethers} from "hardhat";
 import hre from "hardhat";
-import { CrowdingFunding__factory } from "../typechain-types";
 
 describe("Crowdfunding", function(){
 
     async function deployCrowdfunding(){
         
-        const [owner, addr1, addr2] = await hre.ethers.getSigners();
+        const [owner, addr1, addr2, gh] = await hre.ethers.getSigners();
 
-       const Crowdfunding = await hre.ethers.getContractFactory("CrowdingFunding");
+       const Crowdfunding = await hre.ethers.getContractFactory("CrowdFunding");
         const crowdfunding = await Crowdfunding.deploy();
 
         // await crowdfunding.deployed();
+        
 
-        return {crowdfunding, owner, addr1, addr2}
+        return {crowdfunding, owner, addr1, addr2, gh}
 
     }
+    
+
         it("Should create a contract with correct details", async function(){
            
         const goal = ethers.parseEther('10');
@@ -137,11 +139,6 @@ describe("Crowdfunding", function(){
         
             await expect(crowdfunding.connect(addr1).withdrawFunds(1)).to.be.revertedWith("Only creator can withdraw funds");
           });
-
-
-
-
-
         
 
 })
