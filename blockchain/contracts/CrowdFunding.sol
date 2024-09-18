@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
+//Author github: @theGeniusDennis
+
 contract CrowdFunding {
   struct Campaign {
     // Struct for the creator
