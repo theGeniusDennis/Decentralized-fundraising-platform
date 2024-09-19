@@ -1,0 +1,32 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: CrowdFunding
+    network: sepolia
+    source:
+      address: "0xC7BFC25FDf8Ec9B202b407BF424E394f1621b5da"
+      abi: CrowdFunding
+      startBlock: 6717478
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - campaignCreated
+        - contributionMade
+        - fundsWithdrawn
+      abis:
+        - name: CrowdFunding
+          file: ./abis/CrowdFunding.json
+      eventHandlers:
+        - event: campaignCreated(uint256,address,uint256,uint256)
+          handler: handlecampaignCreated
+        - event: contributionMade(uint256,address,uint256)
+          handler: handlecontributionMade
+        - event: fundsWithdrawn(uint256,uint256)
+          handler: handlefundsWithdrawn
+      file: ./src/crowd-funding.ts

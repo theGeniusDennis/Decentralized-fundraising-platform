@@ -28,3 +28,11 @@ User role: Investor
                        -->getCampaigneDetails
         --> Events: --> campaigneCreated, contributionMade, fundsWithdrawn
                     
+
+
+
+
+
+
+contract address: 0xC7BFC25FDf8Ec9B202b407BF424E394f1621b5da
+Sourcify: https://repo.sourcify.dev/contracts/partial_match/11155111/0x96D63F6168fe2D56f62209e81BDb5f3A42dd504b/
